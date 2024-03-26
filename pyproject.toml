@@ -91,6 +91,7 @@ version = {attr = "popjym.__version__"}
 dependencies = {file = ["requirements/requirements.txt"]}
 optional-dependencies = {dev = { file = ["requirements/requirements-dev.txt"] }}
 
+[project]
 name = "popjym"
 readme = "README.md"
 description = "POPJym: Partially Observable Process Gym in JAX"
