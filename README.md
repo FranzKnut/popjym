@@ -1,13 +1,52 @@
-## Structured State Space Models for In-Context Reinforcement Learning
+# POPJym: Partially Observable Process Gym in JAX
 
-#### At NeurIPS 2023
+POPJym is POPGym in JAX. The code has been taken from https://github.com/luchris429/popjaxrl. Original POPGym Paper can be found [here](https://openreview.net/forum?id=chDrutUTs0K). POPJym was originally created for the Structured State Space Models for In-Context Reinforcement Learning paper found [here](The https://arxiv.org/abs/2303.03982). I have currently stolen and simply formatted their code for my own personal use, all credit goes to the original authors.
 
-Chris Lu, Yannick Schroecker, Albert Gu, Emilio Parisotto, Jakob Foerster, Satinder Singh, Feryal Behbahani
+## Quickstart Install
 
-This is a [PureJAX](https://github.com/luchris429/purejaxrl) version of our NeurIPS 2023 paper "Structured State Space Models for In-Context Reinforcement Learning". We evaluate and modify S4-like models for reinforcement learning. Furthermore, we re-implemented [POPGym](https://arxiv.org/abs/2303.01859) in pure JAX, speeding up future research in partially-observed RL.
+```python
+pip install popjym
+```
 
-If you use this repository, please cite:
+In order to use JAX on your accelerators, you can find more details in the [JAX documentation](https://github.com/google/jax#installation).
 
+For e.g.
+```
+pip install "jax[cuda12_pip]==0.4.7" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+```
+
+## Quickstart Usage
+
+```python
+import jax
+import popjym
+seed = jax.random.PRNGKey(0)
+env, env_params = popjym.make(env_name)
+
+print(env.reset(seed, env_params))
+```
+
+# Contributing
+Please follow the coding style by using pre-commit.
+
+```python
+pip install pre-commit
+pre-commit install
+```
+
+# Citing
+
+If used in your work, please cite **a)** the original POPGym paper and **b)** the Structured State Space Models for In-Context Reinforcement Learning paper:
+```
+@inproceedings{
+morad2023popgym,
+title={{POPG}ym: Benchmarking Partially Observable Reinforcement Learning},
+author={Steven Morad and Ryan Kortvelesy and Matteo Bettini and Stephan Liwicki and Amanda Prorok},
+booktitle={The Eleventh International Conference on Learning Representations},
+year={2023},
+url={https://openreview.net/forum?id=chDrutUTs0K}
+}
+```
 ```
 @article{lu2023structured,
   title={Structured State Space Models for In-Context Reinforcement Learning},
@@ -16,32 +55,6 @@ If you use this repository, please cite:
   year={2023}
 }
 ```
-
-## Installation
-
-Install dependencies using the requirements.txt file:
-
-```
-pip install -r requirements.txt
-```
-
-In order to use JAX on your accelerators, you can find more details in the [JAX documentation](https://github.com/google/jax#installation).
-
-```
-pip install "jax[cuda12_pip]==0.4.7" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-```
-
-## Example Usage
-
-`python3 run_popgym.py --num-runs 1 --env BattleshipEasy --arch s5`
-
-## TODOs:
-
-I expect to complete these by 4 November.
-
-- Releasing more thorough tests for each environment
-
-- More thorough benchmarks for speedups
 
 ## References and Acknowledgments
 
@@ -51,17 +64,6 @@ The code implementations here are heavily inspired by:
 - [S5](https://github.com/lindermanlab/S5/tree/main)
 - [Gymnax](https://github.com/RobertTLange/gymnax)
 - [PureJaxRL](https://github.com/luchris429/purejaxrl/tree/main)
-
-If you use this repository, please cite:
-
-```
-@article{lu2023structured,
-  title={Structured State Space Models for In-Context Reinforcement Learning},
-  author={Lu, Chris and Schroecker, Yannick and Gu, Albert and Parisotto, Emilio and Foerster, Jakob and Singh, Satinder and Behbahani, Feryal},
-  journal={arXiv preprint arXiv:2303.03982},
-  year={2023}
-}
-```
 
 If you use the relevant components from above, please also cite them. This includes:
 
@@ -74,18 +76,6 @@ author={Jimmy T.H. Smith and Andrew Warrington and Scott Linderman},
 booktitle={The Eleventh International Conference on Learning Representations },
 year={2023},
 url={https://openreview.net/forum?id=Ai8Hw3AXqks}
-}
-```
-
-POPGym
-```
-@inproceedings{
-morad2023popgym,
-title={{POPG}ym: Benchmarking Partially Observable Reinforcement Learning},
-author={Steven Morad and Ryan Kortvelesy and Matteo Bettini and Stephan Liwicki and Amanda Prorok},
-booktitle={The Eleventh International Conference on Learning Representations},
-year={2023},
-url={https://openreview.net/forum?id=chDrutUTs0K}
 }
 ```
 

@@ -1,0 +1,6 @@
+chex
+flax
+gymnax
+jax
+jaxlib
+numpy
